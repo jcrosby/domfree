@@ -26,6 +26,12 @@ describe("domfree", function() {
     };
     assertEqual(object, DF.clone(object));
   });
+  it("extends empty objects", function() {
+    assertEqual({foo:"bar"}, DF.extend({}, {foo:"bar"}));
+  });
+  it("extends object with existing properties", function() {
+    assertEqual({foo:"bar",box:"car"},DF.extend({foo:"bar"},{box:"car"}));
+  });
   it("adds an each iterator to Array", function() {
     var result = 0;
     var items = [1, 2, 3];
