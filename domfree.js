@@ -9,6 +9,14 @@ DF = function() {
     }
   };
 
+  Object.prototype.ownPropertyNames = function() {
+    var names = [];
+    for(property in this) {
+      if(this.hasOwnProperty(property)) names.push(property);
+    }
+    return names;
+  };
+
   that.isFunction = function(object) {
     return toString.call(object) === "[object Function]";
   };

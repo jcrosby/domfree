@@ -40,4 +40,8 @@ describe("domfree", function() {
     });
     assertEqual(9, result);
   });
+  it("adds ownPropertyNames to Object", function() {
+    var object = {foo: "bar", hello: "there"};
+    assertEqual(['foo', 'hello'], object.ownPropertyNames().sort());
+  });
 });
