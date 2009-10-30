@@ -2,21 +2,6 @@
 DF = function() {
   var that = {};
 
-  Array.prototype.each = function(callback) {
-    var i;
-    for(i = 0; i < this.length; i++) {
-      callback.apply(callback, [i, this[i]]);
-    }
-  };
-
-  Object.prototype.ownPropertyNames = function() {
-    var names = [];
-    for(property in this) {
-      if(this.hasOwnProperty(property)) names.push(property);
-    }
-    return names;
-  };
-
   that.isFunction = function(object) {
     return toString.call(object) === "[object Function]";
   };
@@ -59,6 +44,33 @@ DF = function() {
 
   that.clone = function(target) {
     return that.extend(true, {}, target);
+  };
+
+  Array.prototype.each = function(callback) {
+    var i;
+    for(i = 0; i < this.length; i++) {
+      callback.apply(callback, [i, this[i]]);
+    }
+  };
+
+  Object.prototype.ownPropertyNames = function() {
+    var names = [];
+    for(property in this) {
+      if(this.hasOwnProperty(property)) names.push(property);
+    }
+    return names;
+  };
+
+  Object.prototype.excluding = function(properties) {
+    var clone = that.clone(this);
+    if(that.isArray(properties)) {
+      properties.each(function(i, property) {
+        delete clone[property];
+      });
+    } else {
+      delete clone[properties];
+    }
+    return clone;
   };
 
   return that;

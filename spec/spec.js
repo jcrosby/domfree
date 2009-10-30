@@ -44,4 +44,14 @@ describe("domfree", function() {
     var object = {foo: "bar", hello: "there"};
     assertEqual(['foo', 'hello'], object.ownPropertyNames().sort());
   });
+  it("excludes a single property", function() {
+    var object = {foo: "bar", hello: "there"};
+    assert(!object.excluding('hello').hello);
+  });
+  it("excludes properties", function() {
+    var object = {foo: "bar", hello: "there", thing: "baz"};
+    var stripped = object.excluding(['foo', 'thing']);
+    assert(!stripped.foo);
+    assert(!stripped.thing);
+  });
 });
