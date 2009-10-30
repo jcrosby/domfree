@@ -54,4 +54,12 @@ describe("domfree", function() {
     assert(!stripped.foo);
     assert(!stripped.thing);
   });
+  it("produces a UUID", function() {
+    var uuid = DF.uuid();
+    assertEqual('-', uuid[8]);
+    assertEqual('-', uuid[13]);
+    assertEqual('-', uuid[18]);
+    assertEqual('-', uuid[23]);
+    assertEqual(36, uuid.length);
+  });
 });

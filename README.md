@@ -23,3 +23,4 @@ rake dist
 Credits
 -------
 isFunction, isArray, clone/extend from jQuery
+uuid based on Math.uuid.js from Robert Kieffer
