@@ -45,7 +45,7 @@ DF = function() {
   that.clone = function(target) {
     return that.extend(true, {}, target);
   };
-  
+
   that.uuid = function() {
     var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
     var random;
@@ -54,7 +54,7 @@ DF = function() {
     uuid[14] = '4';
     for (var i = 0; i < 36; i++) {
       if (!uuid[i]) {
-        random = 0 | Math.random()*16;
+        random = 0 | Math.random() * 16;
         uuid[i] = chars[(i == 19) ? (random & 0x3) | 0x8 : random];
       }
     }

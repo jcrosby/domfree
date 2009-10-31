@@ -1,4 +1,4 @@
-node.mixin(require('../domfree.js'));
+process.mixin(require('./../domfree'));
 describe("domfree", function() {
   it("knows a function when it sees it", function() {
     assert(DF.isFunction(function(){}));
