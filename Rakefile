@@ -16,3 +16,11 @@ task :dist do
   File.open('dist/domfree.min.js', 'w') { |io| io.write(JSMin.minify(source)) }
   puts "Complete: the dist directory contains development and minified versions of domfree.\n"
 end
+
+namespace :update do
+  desc 'update dependencies'
+  task :deps do
+    FileUtils.cp('../spectacular/tacular.js', 'spec/tacular.js')
+  end
+end
+
